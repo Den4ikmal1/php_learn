@@ -12,46 +12,49 @@ use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use common\models\Category;
 
 class CategoriesController extends Controller
 {
-
     public function actionIndex()
     {
-        $query = Item::find();
-
-        $pagination = new Pagination([
-            'defaultPageSize' => 5,
-            'totalCount' => $query->count()
-        ]);
-
-        $items = $query->orderBy('name')
-            -> offset($pagination >offset)
-            -> limit($pagination -> limit)
-            -> all();
-
+        $query = Category::find();
+        $categories = $query->orderBy('name')->all();
         return $this->render('index', [
-            'items' => $items,
-            'pagination' => $pagination
+            'categories' => $categories
         ]);
     }
 
-    public function actionRemove()
+    public function actionRemove($id)
     {
-        $itemId = Yii::$app->request->get('id');
-        if (!$itemId) {
-            $this->findModel($itemId)->delete();
+        if($id && Category::findOne($id)){
+            Category::findOne($id)->delete();
             return $this->redirect(['index']);
         }
     }
 
     public function actionCreate()
     {
-        $model = new Item();
+        $model = new Category();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('new', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+
+    public function actionUpdate($id)
+    {
+        $model = Category::findOne($id);
+        var_dump($model); die();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
+        } else {
+            return $this->render('edit', [
                 'model' => $model,
             ]);
         }

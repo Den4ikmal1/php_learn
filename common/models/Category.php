@@ -7,10 +7,12 @@
  */
 
 namespace common\models;
+
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\db\ActiveQuery;
 
 
 class Category extends ActiveRecord
@@ -20,5 +22,13 @@ class Category extends ActiveRecord
     {
         return 'categories';
     }
+
+    public function scenarios()
+    {
+        return [
+            self::SCENARIO_DEFAULT => ['name']
+        ];
+    }
+
 
 }

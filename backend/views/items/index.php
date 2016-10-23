@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= Html::a('Remove', ['items/remove', 'id' =>$item -> id], ['class' => 'btn btn-danger']) ?>
             <?= Html::a('Update', ['items/update', 'id' =>$item -> id], ['class' => 'btn btn-default']) ?>
         <?php endforeach; ?>
+    </div>
 
 
 </div>

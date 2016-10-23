@@ -23,7 +23,10 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+<?php $this->beginContent('@app/views/layouts/header.php'); ?>
+<?php $this->endContent(); ?>
 <?php $this->beginBody() ?>
+
 
 <div class="wrap">
     <?php
@@ -68,11 +71,8 @@ AppAsset::register($this);
 </div>
 
 <footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
+<?php $this->beginContent('@app/views/layouts/footer.php'); ?>
+<?php $this->endContent(); ?>
 </footer>
 
 <?php $this->endBody() ?>

@@ -23,6 +23,8 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+<?php $this->beginContent('@app/views/layouts/header.php'); ?>
+<?php $this->endContent(); ?>>
 <?php $this->beginBody() ?>
 
 <div class="wrap">
@@ -36,6 +38,8 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Items', 'url' => ['/items/index']],
+        ['label' => 'Categories', 'url' => ['/categories/index']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
         ['label' => 'Green', 'url' => ['/green/index']],
@@ -69,16 +73,11 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
-
 <?php $this->endBody() ?>
+<footer class="footer">
+<?php $this->beginContent('@app/views/layouts/footer.php'); ?>
+<?php $this->endContent(); ?>>
+</footer>
 </body>
 </html>
 <?php $this->endPage() ?>

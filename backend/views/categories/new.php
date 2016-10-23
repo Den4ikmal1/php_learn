@@ -1,7 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: denis
- * Date: 21.10.16
- * Time: 16:08
- */
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+?>
+
+<div class="form">
+    <?= $this->render('_form', [
+        'model' => $model,
+    ]) ?>
+
+</div>
