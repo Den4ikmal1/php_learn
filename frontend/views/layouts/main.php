@@ -40,6 +40,7 @@ AppAsset::register($this);
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Items', 'url' => ['/items/index']],
         ['label' => 'Categories', 'url' => ['/categories/index']],
+        ['label' => 'Calculator', 'url' => ['/calculator/index']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
         ['label' => 'Green', 'url' => ['/green/index']],
