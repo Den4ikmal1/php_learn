@@ -49,7 +49,6 @@ class CategoriesController extends Controller
     public function actionUpdate($id)
     {
         $model = Category::findOne($id);
-        var_dump($model); die();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
