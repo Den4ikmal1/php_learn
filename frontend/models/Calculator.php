@@ -25,8 +25,6 @@ class Calculator extends Model
         ];
     }
 
-
-
     public function calculate()
     {
         switch ($this->operation) {
@@ -42,7 +40,4 @@ class Calculator extends Model
                 return 0;
         }
     }
-
-
-
 }
