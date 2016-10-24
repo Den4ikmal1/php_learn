@@ -11,34 +11,38 @@ class Calculator extends Model
     public $valueB;
     public $operation;
 
-    public $error = false;
-
-    private $param1 = null;
-    private $param2 = null;
-    private $operations = null;
-
     public function rules()
     {
         return [
-            [ 'valueA', 'required' ]
+            [[ 'valueA', 'valueB', 'operation'], 'required' ],
+        ];
+    }
+
+    public function scenarios()
+    {
+        return [
+            self::SCENARIO_DEFAULT => ['valueA', 'valueB', 'operation']
         ];
     }
 
 
+
     public function calculate()
     {
-        switch ( $this -> operation ) {
-            case '+':
-                return ( $this -> valueA + $this -> valueB );
-            case '-':
-                return ( $this -> valueA - $this -> valueB );
-            case '*':
-                return ( $this -> valueA * $this -> valueB );
-            case '/':
-                return ( $this -> valueA / $this -> valueB );
+        switch ($this->operation) {
+            case '0':
+                return (floatval($this->valueA) + floatval($this->valueB));
+            case '1':
+                return (floatval($this -> valueA) - floatval($this -> valueB));
+            case '2':
+                return (floatval($this -> valueA) * floatval($this -> valueB));
+            case '3':
+                return (floatval($this -> valueA) / floatval($this -> valueB));
             default:
                 return 0;
         }
     }
+
+
 
 }

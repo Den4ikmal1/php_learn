@@ -26,13 +26,13 @@ class CalculatorController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
 
-            return $this -> render('show', [
+            return $this->render('show', [
                 'model' => $model,
                 'result' => $model->calculate()
             ]);
 
         } else {
-            return $this -> render( 'index', [ 'model' => $model ] );
+            return $this->render('index', ['model' => $model]);
         }
     }
 }
